@@ -3,7 +3,7 @@ import { API_BASE } from "@/lib/api";
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, Eye, EyeOff, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, ArrowRight, ShieldCheck } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
 export default function LoginPage() {
@@ -46,12 +46,6 @@ export default function LoginPage() {
       setError("An unexpected error occurred. Please try again.");
       setLoading(false);
     }
-  };
-
-  const fillDemo = (demoEmail: string, demoPass: string) => {
-    setEmail(demoEmail);
-    setPassword(demoPass);
-    setError("");
   };
 
   return (
@@ -123,33 +117,6 @@ export default function LoginPage() {
             {!loading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
           </button>
         </form>
-
-        {/* Demo Fast Login Buttons */}
-        <div className="mt-8 pt-6 border-t border-slate-800">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-amber-400" /> Quick Demo Accounts
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => fillDemo("admin@example.com", "admin123")}
-              className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 text-left transition-all group"
-            >
-              <div className="text-xs font-bold text-blue-400 group-hover:text-blue-300">Admin Account</div>
-              <div className="text-[10px] text-slate-400">admin@example.com</div>
-            </button>
-
-            <button
-              onClick={() => fillDemo("john.doe@example.com", "employee123")}
-              className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 text-left transition-all group"
-            >
-              <div className="text-xs font-bold text-emerald-400 group-hover:text-emerald-300">Employee Account</div>
-              <div className="text-[10px] text-slate-400">john.doe@example.com</div>
-            </button>
-          </div>
-        </div>
 
         <div className="mt-6 text-center text-[11px] text-slate-500 flex items-center justify-center gap-1">
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Encrypted JWT Authentication Session
